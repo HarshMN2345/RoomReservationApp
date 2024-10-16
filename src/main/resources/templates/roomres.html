@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>White Lotus: Room Reservations</title>
+</head>
+<body>
+<h1>Welcome to the Reservations Page</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Room</th>
+        <th>Room Number</th>
+        <th>Guest</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="roomReservation : ${roomReservations}">
+        <td th:text="${roomReservation.roomName}">Room Name</td>
+        <td th:text="${roomReservation.roomNumber}">Room Number</td>
+        <td>
+                <span th:if="${roomReservation.lastName != null}"
+                      th:text="${roomReservation.lastName} + ', ' + ${roomReservation.firstName}">Guest</span>            <span th:if="${roomReservation.lastName == null}"
+                  th:text="'VACANT'"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
